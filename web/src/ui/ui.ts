@@ -1,8 +1,17 @@
+import {provideBrowserGlobalErrorListeners, provideZoneChangeDetection} from '@angular/core';
+import {bootstrapApplication} from '@angular/platform-browser';
 import {Partner} from '../core/Partner';
+import {App} from './app';
 
 export function createUserInterface(partner: Partner): void {
-  window.addEventListener('load', () => {
-    window.document.getElementById('partnerName').textContent = partner.partnerName;
-    window.document.getElementById('partnerConversion').textContent = partner.partnerConversions.toString();
-  });
+  bootstrapApplication(App, {
+    providers: [
+      provideBrowserGlobalErrorListeners(),
+      provideZoneChangeDetection({eventCoalescing: true}),
+      {provide: 'partner', useValue: partner},
+    ],
+  })
+    .catch(error => {
+      throw error;
+    });
 }

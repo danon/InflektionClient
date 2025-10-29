@@ -56,3 +56,6 @@ yarn run playwright test
   I run acceptance tests, to make sure the bundle is properly created and the
   behaviour is still correct.
 - I decided to separate the business logic of the application from the interface
+- I updated the user interface from vanilla-js to angular, with the behaviour specified
+  by the acceptance test. Thanks to good design and separation of concern, the migration
+  didn't require change in business logic or acceptance tests.

@@ -6,7 +6,7 @@ tasks:
     - yarn vitest --run
   bundle:
     - task: install
-    - yarn vite build --mode production
+    - yarn ng build
   start:
     - task: bundle
-    - yarn vite preview --port 8080 --strictPort
+    - yarn ng serve --port 8080
