@@ -21,9 +21,10 @@ export class Dsl {
 
   async fetchPartners(): Promise<Partner[]> {
     const names = await this.driver.findPartnerNames();
-    return names.map(name => ({
+    const conversions = await this.driver.findPartnerConversions();
+    return zip(names, conversions).map(([name, conversion]) => ({
       partnerName: name,
-      partnerConversions: -1,
+      partnerConversions: conversion,
     }));
   }
 }
@@ -31,4 +32,8 @@ export class Dsl {
 interface Partner {
   partnerName?: string;
   partnerConversions?: number;
+}
+
+function zip<T1, T2>(array1: T1[], array2: T2[]): [T1, T2][] {
+  return array1.map((element: T1, index: number) => [element, array2[index]]);
 }

@@ -10,6 +10,11 @@ export class Driver {
   async findPartnerNames(): Promise<string[]> {
     return await this.web.findTextAll('partnerName');
   }
+
+  async findPartnerConversions(): Promise<number[]> {
+    const conversions = await this.web.findTextAll('partnerConversion');
+    return conversions.map(conversion => parseInt(conversion));
+  }
 }
 
 function jsonEncode(input: object): string {

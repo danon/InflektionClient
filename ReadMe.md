@@ -47,7 +47,8 @@ yarn run playwright test
   test needs to control the list of partners, so the production network endpoint is not exercised yet.
 - I stubbed a fake partner name of `"Foo"`, just to see if acceptance test can read it and assert
   it to be an expected partner name.
-- I displayed a partner name using vanilla-js, just to get the acceptance tests to pass.
+- **Second deliverable**, I displayed a partner name using vanilla-js, just to get the acceptance tests to pass.
 - Now I added another acceptance test, for partner to have a number of conversions. That
   drives me to input more data into the system, as well as drive the ui to have multiple fields
   per partner.
+- **Third deliverable**, I displayed a partner conversion using vanilla-js. Acceptance tests now pass.
