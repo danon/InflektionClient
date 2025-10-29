@@ -1,6 +1,6 @@
 version: 3
-tasks:
-  install: yarn install
-  test:
-    - task: install
-    - yarn vitest --run
+
+includes:
+  web:
+    taskfile: ./web/
+    dir: ./web/

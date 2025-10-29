@@ -1,7 +1,2 @@
 # Project
 .idea/
-
-# Node/yarn
-.yarn/
-.yarnrc.yml
-node_modules/
