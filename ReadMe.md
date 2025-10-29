@@ -7,9 +7,10 @@ This is an application, to allow users to view partners.
 Run application unit tests and acceptance tests
 
 ```
-task web:test      # Run client unit tests
-task web:start     # Start the application for the acceptance tests
-task accept:test   # Run application acceptance tests
+task web:test         # Run client unit tests
+task web:start        # Start the application for the acceptance tests
+task accept:install   # Install acceptance test dependencies
+task accept:test      # Run application acceptance tests
 ```
 
 If you don't have [`taskfile`](https://taskfile.dev/), execute:
@@ -22,6 +23,7 @@ cd ../
 
 cd acceptance/
 yarn install
+yarn run playwright install --with-deps
 yarn run playwright test
 ```
 
@@ -40,3 +42,4 @@ yarn run playwright test
   now fail, because the application is not started, and that test-drives me to start the application process.
 - I served an empty webpage bundled with `vite`, so that the smoke test can access it.
   **First deliverable**, the application is served at an open port.
+- I installed playwright internal dependencies, because some systems require explicit chrome driver.
