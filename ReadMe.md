@@ -52,3 +52,6 @@ yarn run playwright test
   drives me to input more data into the system, as well as drive the ui to have multiple fields
   per partner.
 - **Third deliverable**, I displayed a partner conversion using vanilla-js. Acceptance tests now pass.
+- Refactor, I extract code from `index.html` to `main.ts`, so it's bundled by `vite`.
+  I run acceptance tests, to make sure the bundle is properly created and the
+  behaviour is still correct.
