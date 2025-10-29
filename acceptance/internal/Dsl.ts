@@ -21,10 +21,14 @@ export class Dsl {
 
   async fetchPartners(): Promise<Partner[]> {
     const names = await this.driver.findPartnerNames();
-    return names.map(name => ({partnerName: name}));
+    return names.map(name => ({
+      partnerName: name,
+      partnerConversions: -1,
+    }));
   }
 }
 
 interface Partner {
-  partnerName: string;
+  partnerName?: string;
+  partnerConversions?: number;
 }

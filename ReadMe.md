@@ -48,3 +48,6 @@ yarn run playwright test
 - I stubbed a fake partner name of `"Foo"`, just to see if acceptance test can read it and assert
   it to be an expected partner name.
 - I displayed a partner name using vanilla-js, just to get the acceptance tests to pass.
+- Now I added another acceptance test, for partner to have a number of conversions. That
+  drives me to input more data into the system, as well as drive the ui to have multiple fields
+  per partner.
