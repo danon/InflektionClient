@@ -1,4 +1,4 @@
-import {Partner} from './Partner';
+import {Partner} from './core/Partner';
 
 export function testInput(): TestInput {
   const searchParams = new URLSearchParams(window.location.search);

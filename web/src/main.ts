@@ -1,11 +1,6 @@
+import {PartnerService} from './core/PartnerService';
 import {testInput} from './testInput';
+import {createUserInterface} from './ui/ui';
 
-window.addEventListener('load', () => {
-  const [partner] = partners();
-  window.document.getElementById('partnerName').textContent = partner.partnerName;
-  window.document.getElementById('partnerConversion').textContent = partner.partnerConversions.toString();
-});
-
-function partners() {
-  return testInput().partners;
-}
+const service = new PartnerService(testInput().partners);
+createUserInterface(service.findPartner());

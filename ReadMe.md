@@ -55,3 +55,4 @@ yarn run playwright test
 - Refactor, I extract code from `index.html` to `main.ts`, so it's bundled by `vite`.
   I run acceptance tests, to make sure the bundle is properly created and the
   behaviour is still correct.
+- I decided to separate the business logic of the application from the interface
