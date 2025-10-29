@@ -43,3 +43,5 @@ yarn run playwright test
 - I served an empty webpage bundled with `vite`, so that the smoke test can access it.
   **First deliverable**, the application is served at an open port.
 - I installed playwright internal dependencies, because some systems require explicit chrome driver.
+- I created a new failing acceptance test, to read the partners from the webpage. The acceptance
+  test needs to control the list of partners, so the production network endpoint is not exercised yet.
