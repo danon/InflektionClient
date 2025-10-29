@@ -6,4 +6,8 @@ export class Driver {
   async loadApplication(): Promise<void> {
     await this.web.navigate('/');
   }
+
+  async findPartnerNames(): Promise<string[]> {
+    return await this.web.findTextAll('partnerName');
+  }
 }

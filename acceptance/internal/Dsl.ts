@@ -14,8 +14,9 @@ export class Dsl {
     await this.driver.loadApplication();
   }
 
-  fetchPartners(): Partner[] {
-    return [];
+  async fetchPartners(): Promise<Partner[]> {
+    const names = await this.driver.findPartnerNames();
+    return names.map(name => ({partnerName: name}));
   }
 }
 

@@ -45,3 +45,5 @@ yarn run playwright test
 - I installed playwright internal dependencies, because some systems require explicit chrome driver.
 - I created a new failing acceptance test, to read the partners from the webpage. The acceptance
   test needs to control the list of partners, so the production network endpoint is not exercised yet.
+- I stubbed a fake partner name of `"Foo"`, just to see if acceptance test can read it and assert
+  it to be an expected partner name.

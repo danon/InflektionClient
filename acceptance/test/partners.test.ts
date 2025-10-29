@@ -12,7 +12,7 @@ describe('Partners are presented to the user.', () => {
     // when user requests the list of partners
     await dsl.requestPartners();
     // then the partners are presented
-    const [partner] = dsl.fetchPartners();
+    const [partner] = await dsl.fetchPartners();
     assertEquals('Green Living', partner.partnerName);
   });
 });
