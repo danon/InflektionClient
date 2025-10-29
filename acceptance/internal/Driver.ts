@@ -15,6 +15,10 @@ export class Driver {
     const conversions = await this.web.findTextAll('partnerConversion');
     return conversions.map(conversion => parseInt(conversion));
   }
+
+  async partnersListAvailable(): Promise<boolean> {
+    return !await this.web.textVisible('Failed to load partners.');
+  }
 }
 
 function jsonEncode(input: object): string {

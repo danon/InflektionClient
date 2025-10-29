@@ -59,3 +59,5 @@ yarn run playwright test
 - I updated the user interface from vanilla-js to angular, with the behaviour specified
   by the acceptance test. Thanks to good design and separation of concern, the migration
   didn't require change in business logic or acceptance tests.
+- I added a failing acceptance test, that given a failure to load partners results in informing
+  the user of a failure.

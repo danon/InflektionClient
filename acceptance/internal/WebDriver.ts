@@ -11,4 +11,8 @@ export class WebDriver {
     const strings = await this.page.getByTestId(testId).allTextContents();
     return strings.map(string => string.trim());
   }
+
+  async textVisible(textContent: string): Promise<boolean> {
+    return await this.page.getByText(textContent).isVisible();
+  }
 }

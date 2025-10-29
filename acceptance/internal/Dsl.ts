@@ -11,8 +11,12 @@ export class Dsl {
     await this.driver.loadApplication({});
   }
 
-  async populateTestPartnersList(partners: Partner[]): Promise<void> {
+  async testPartnersListPopulate(partners: Partner[]): Promise<void> {
     this.testInput = {partners};
+  }
+
+  async testPartnersListUnavailable(): Promise<void> {
+    this.testInput = {partnersAvailable: false};
   }
 
   async requestPartners(): Promise<void> {
@@ -26,6 +30,10 @@ export class Dsl {
       partnerName: name,
       partnerConversions: conversion,
     }));
+  }
+
+  async partnersListAvailable(): Promise<boolean> {
+    return await this.driver.partnersListAvailable();
   }
 }
 
