@@ -1,17 +1,22 @@
 import {Driver} from "./Driver";
 
 export class Dsl {
-  constructor(private driver: Driver) {}
+  private testInput: object;
+
+  constructor(private driver: Driver) {
+    this.testInput = {};
+  }
 
   async beforeEach(): Promise<void> {
-    await this.driver.loadApplication();
+    await this.driver.loadApplication({});
   }
 
   async populateTestPartnersList(partners: Partner[]): Promise<void> {
+    this.testInput = {partners};
   }
 
   async requestPartners(): Promise<void> {
-    await this.driver.loadApplication();
+    await this.driver.loadApplication(this.testInput);
   }
 
   async fetchPartners(): Promise<Partner[]> {
