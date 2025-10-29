@@ -61,3 +61,5 @@ yarn run playwright test
   didn't require change in business logic or acceptance tests.
 - I added a failing acceptance test, that given a failure to load partners results in informing
   the user of a failure.
+- I updated test client to include loading latency, to simulate network delays. In order to make acceptance tests pass,
+  I updated the ui components to display a loading state.

@@ -1,14 +1,14 @@
 import {provideBrowserGlobalErrorListeners, provideZoneChangeDetection} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {PartnerContainer} from '../core/Partner';
+import {ApiClient} from '../core/ApiClient';
 import {App} from './app';
 
-export function createUserInterface(partner: PartnerContainer): void {
+export function createUserInterface(apiClient: ApiClient): void {
   bootstrapApplication(App, {
     providers: [
       provideBrowserGlobalErrorListeners(),
       provideZoneChangeDetection({eventCoalescing: true}),
-      {provide: 'partner', useValue: partner},
+      {provide: 'ApiClient', useValue: apiClient},
     ],
   })
     .catch(error => {

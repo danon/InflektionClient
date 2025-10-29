@@ -8,7 +8,7 @@ export function testInput(): TestInput {
   return {partnersAvailable: false, partners: []};
 }
 
-interface TestInput {
+export interface TestInput {
   partnersAvailable: boolean;
   partners: Partner[];
 }
