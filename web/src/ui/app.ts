@@ -1,16 +1,20 @@
 import {Component, Inject} from '@angular/core';
-import {Partner} from '../core/Partner';
+import {PartnerContainer} from '../core/Partner';
 
 @Component({
   selector: 'app-root',
   template: `
-      <span data-testid="partnerName">{{partner.partnerName}}</span>
-      <span data-testid="partnerConversion">{{partner.partnerConversions}}</span>`,
+      @if (container.state === 'available') {
+          <span data-testid="partnerName">{{container.partner!.partnerName}}</span>
+          <span data-testid="partnerConversion">{{container.partner!.partnerConversions}}</span>
+      } @else {
+          <span>Failed to load partners.</span>
+      }
+  `,
 })
 export class App {
   constructor(
     @Inject('partner')
-    protected readonly partner: Partner,
-  ) {
-  }
+    protected readonly container: PartnerContainer,
+  ) {}
 }

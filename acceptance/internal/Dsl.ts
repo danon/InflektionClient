@@ -12,11 +12,11 @@ export class Dsl {
   }
 
   async testPartnersListPopulate(partners: Partner[]): Promise<void> {
-    this.testInput = {partners};
+    this.testInput = {partnersAvailable: true, partners};
   }
 
   async testPartnersListUnavailable(): Promise<void> {
-    this.testInput = {partnersAvailable: false};
+    this.testInput = {partnersAvailable: false, partners: []};
   }
 
   async requestPartners(): Promise<void> {

@@ -1,9 +1,9 @@
 import {provideBrowserGlobalErrorListeners, provideZoneChangeDetection} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
-import {Partner} from '../core/Partner';
+import {PartnerContainer} from '../core/Partner';
 import {App} from './app';
 
-export function createUserInterface(partner: Partner): void {
+export function createUserInterface(partner: PartnerContainer): void {
   bootstrapApplication(App, {
     providers: [
       provideBrowserGlobalErrorListeners(),
