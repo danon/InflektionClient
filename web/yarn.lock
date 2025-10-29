@@ -1361,6 +1361,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    vite: "npm:^7.1.12"
     vitest: "npm:^3.2.4"
   languageName: unknown
   linkType: soft
@@ -1609,7 +1610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0":
+"vite@npm:^5.0.0 || ^6.0.0 || ^7.0.0-0, vite@npm:^7.1.12":
   version: 7.1.12
   resolution: "vite@npm:7.1.12"
   dependencies:

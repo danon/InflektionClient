@@ -2,6 +2,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "vite": "^7.1.12",
     "vitest": "^3.2.4"
   }
 }

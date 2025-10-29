@@ -8,6 +8,7 @@ Run application unit tests and acceptance tests
 
 ```
 task web:test      # Run client unit tests
+task web:start     # Start the application for the acceptance tests
 task accept:test   # Run application acceptance tests
 ```
 
@@ -37,3 +38,5 @@ yarn run playwright test
   When the bug is fixed, update to newest `vitest` is encouraged.
 - I create a smoke test, that expects to read the application on `http://localhost:8080/`. The tests
   now fail, because the application is not started, and that test-drives me to start the application process.
+- I served an empty webpage bundled with `vite`, so that the smoke test can access it.
+  **First deliverable**, the application is served at an open port.

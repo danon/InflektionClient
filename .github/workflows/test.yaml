@@ -26,5 +26,8 @@ jobs:
       - name: Run client unit tests
         run: task web:test
 
+      - name: Start the application for acceptance tests
+        run: task web:start &
+
       - name: Run application acceptance tests
         run: task accept:test

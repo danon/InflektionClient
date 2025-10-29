@@ -4,3 +4,9 @@ tasks:
   test:
     - task: install
     - yarn vitest --run
+  bundle:
+    - task: install
+    - yarn vite build --mode production
+  start:
+    - task: bundle
+    - yarn vite preview --port 8080 --strictPort
