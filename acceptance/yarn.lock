@@ -57,6 +57,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@playwright/test@npm:^1.56.1":
+  version: 1.56.1
+  resolution: "@playwright/test@npm:1.56.1"
+  dependencies:
+    playwright: "npm:1.56.1"
+  bin:
+    playwright: cli.js
+  checksum: 10c0/2b5b0e1f2e6a18f6e5ce6897c7440ca78f64e0b004834e9808e93ad2b78b96366b562ae4366602669cf8ad793a43d85481b58541e74be71e905e732d833dd691
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:^3.0.0":
   version: 3.0.1
   resolution: "abbrev@npm:3.0.1"
@@ -594,7 +605,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright@npm:^1.56.1":
+"playwright@npm:1.56.1":
   version: 1.56.1
   resolution: "playwright@npm:1.56.1"
   dependencies:
@@ -637,7 +648,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    playwright: "npm:^1.56.1"
+    "@playwright/test": "npm:^1.56.1"
   languageName: unknown
   linkType: soft
 
