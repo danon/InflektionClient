@@ -35,3 +35,5 @@ yarn run playwright test
 - I downgraded `vitest` from `4.0.4` to `3.2.4`, because of a bug in WebStorm IDE:
   https://youtrack.jetbrains.com/issue/WEB-75191/No-tests-found-when-running-Vitest-4-tests
   When the bug is fixed, update to newest `vitest` is encouraged.
+- I create a smoke test, that expects to read the application on `http://localhost:8080/`. The tests
+  now fail, because the application is not started, and that test-drives me to start the application process.
