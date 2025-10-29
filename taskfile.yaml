@@ -1,6 +1,9 @@
 version: 3
 
 includes:
+  accept:
+    taskfile: ./acceptance/
+    dir: ./acceptance/
   web:
     taskfile: ./web/
     dir: ./web/
