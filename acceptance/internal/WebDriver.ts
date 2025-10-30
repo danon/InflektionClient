@@ -1,4 +1,4 @@
-import {Page} from '@playwright/test';
+import {expect, Page} from '@playwright/test';
 
 export class WebDriver {
   constructor(private page: Page) {}
@@ -14,5 +14,9 @@ export class WebDriver {
 
   async textVisible(textContent: string): Promise<boolean> {
     return await this.page.getByText(textContent).isVisible();
+  }
+
+  async waitPartnerListFinishedLoading():Promise<void> {
+    await expect(this.page.getByText('Loading...')).not.toBeVisible();
   }
 }

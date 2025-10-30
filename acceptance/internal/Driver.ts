@@ -8,15 +8,18 @@ export class Driver {
   }
 
   async findPartnerNames(): Promise<string[]> {
+    await this.web.waitPartnerListFinishedLoading();
     return await this.web.findTextAll('partnerName');
   }
 
   async findPartnerConversions(): Promise<number[]> {
+    await this.web.waitPartnerListFinishedLoading();
     const conversions = await this.web.findTextAll('partnerConversion');
     return conversions.map(conversion => parseInt(conversion));
   }
 
   async partnersListAvailable(): Promise<boolean> {
+    await this.web.waitPartnerListFinishedLoading();
     return !await this.web.textVisible('Failed to load partners.');
   }
 }
