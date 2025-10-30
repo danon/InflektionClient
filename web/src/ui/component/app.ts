@@ -12,7 +12,7 @@ import {SkeletonTable} from './skeleton-table';
     <main>
       <sidebar/>
       <section>
-        <div class="flex">
+        <div class="flex justify-between">
           <div>
             <h1>Power Plate</h1>
             <h2>Dashboard</h2>
@@ -25,7 +25,7 @@ import {SkeletonTable} from './skeleton-table';
             </div>
           </div>
         </div>
-        <div>
+        <div class="flex space-x-17.5">
           <button>
             Choose Columns
             <span class="icon choose-columns"></span>

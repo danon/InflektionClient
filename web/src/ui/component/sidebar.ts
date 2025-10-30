@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
   imports: [NgOptimizedImage],
   template: `
     <aside>
-      <img ngSrc="../asset/logo.svg" alt="Inflektion" height="27" width="164"/>
+      <img class="logo" ngSrc="../asset/logo.svg" alt="Inflektion" height="27" width="164"/>
       <ul>
         <li class="selected">
           <div class="icon dashboard"></div>

@@ -10,7 +10,7 @@ import {Component, input} from '@angular/core';
         }
       </tr>
       <tr>
-        <td [attr.colspan]="fields().length.toString()">
+        <td [attr.colspan]="fields().length.toString()" class="skeleton-content">
           <ng-content/>
         </td>
       </tr>
