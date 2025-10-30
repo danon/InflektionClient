@@ -12,16 +12,32 @@ import {SkeletonTable} from './skeleton-table';
     <main>
       <sidebar/>
       <section>
-        <div>
-          <span>HD</span>
-          TEST User
+        <div class="flex">
+          <div>
+            <h1>Power Plate</h1>
+            <h2>Dashboard</h2>
+          </div>
+          <div class="auth">
+            <span class="avatar">HD</span>
+            <div>
+              <div class="text1">TEST</div>
+              <div class="username">User</div>
+            </div>
+          </div>
         </div>
         <div>
-          <h1>Power Plate</h1>
-          <h2>Dashboard</h2>
-          <button>Choose Columns</button>
-          <button>Message Partners</button>
-          <button>Export List</button>
+          <button>
+            Choose Columns
+            <span class="icon choose-columns"></span>
+          </button>
+          <button>
+            Message Partners
+            <span class="icon message-partners"></span>
+          </button>
+          <button>
+            Export List
+            <span class="icon export-list"></span>
+          </button>
         </div>
         @if (state === 'available') {
           <partners-table [partners]="partners!"/>
@@ -30,7 +46,9 @@ import {SkeletonTable} from './skeleton-table';
             Failed to load partners.
           </skeleton-table>
         } @else {
-          <span>Loading...</span>
+          <skeleton-table [fields]="partnerFields">
+            Loading partners...
+          </skeleton-table>
         }
       </section>
     </main>

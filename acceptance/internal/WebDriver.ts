@@ -17,6 +17,6 @@ export class WebDriver {
   }
 
   async waitPartnerListFinishedLoading():Promise<void> {
-    await expect(this.page.getByText('Loading...')).not.toBeVisible();
+    await expect(this.page.getByText('Loading partners...')).not.toBeVisible();
   }
 }

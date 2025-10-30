@@ -8,9 +8,18 @@ import {Component} from '@angular/core';
     <aside>
       <img ngSrc="../asset/logo.svg" alt="Inflektion" height="27" width="164"/>
       <ul>
-        <li>Dashboard</li>
-        <li>Partners</li>
-        <li>Approvals</li>
+        <li class="selected">
+          <div class="icon dashboard"></div>
+          Dashboard
+        </li>
+        <li>
+          <div class="icon partners"></div>
+          Partners
+        </li>
+        <li>
+          <div class="icon approvals"></div>
+          Approvals
+        </li>
       </ul>
     </aside>
   `,

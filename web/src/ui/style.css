@@ -1,16 +1,185 @@
+body, * {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("./asset/Poppins-Regular.ttf") format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("./asset/Poppins-Medium.ttf") format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("./asset/Poppins-SemiBold.ttf") format("opentype");
+  font-weight: 600;
+}
+
 main {
+  display: flex;
+  width: 1920px;
+}
+
+main section {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #031050;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #9097b9;
+}
+
+aside ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+aside ul li {
+  font-size: 16px;
+  color: #0310507f; /* 50% opacity */
+}
+
+aside ul li.selected {
+  color: #ffffff;
+  background: #031050;
+  font-weight: 600;
+  border-left: 5px solid #ff13b8;
+}
+
+button {
+  color: #ffffff;
+  border: none;
+}
+
+.auth {
+  color: #031050;
   display: flex;
 }
 
-/* typography-font */
-/* typography-size */
-/* typography-weight */
-/* color-text */
-/* color-bg */
-/* box-radius */
-/* box-border */
+.auth .avatar {
+  display: block;
+  line-height: 45px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  background: #ff14b9;
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+}
+
+.auth {
+  font-size: 16px;
+
+  .text1 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .username {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+table {
+  display: grid;
+}
+
+table tr th {
+  font-weight: 400;
+}
+
+table tr:first-child {
+  background: #031050;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+
+table tr th {
+  color: #f8fcff;
+}
+
+button {
+  background: #5e33ce;
+  background: linear-gradient(to bottom left, #5e33ce 2%, #1e0b50 100%);
+  height: 45px;
+  border-radius: 22.5px;
+  padding: 0 20px;
+}
+
+aside {
+  width: 235px;
+}
+
+aside ul li .icon {
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+}
+
+aside ul li .icon.dashboard {
+  background-image: url("./asset/sidebarDashboard.svg");
+}
+
+aside ul li .icon.partners {
+  background-image: url("./asset/sidebarPartners.svg");
+}
+
+aside ul li .icon.approvals {
+  background-image: url("./asset/sidebarApprovals.svg");
+}
+
+button .icon {
+  width: 17px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+}
+
+button .icon.choose-columns {
+  background-image: url("./asset/tableColumns.svg");
+}
+
+button .icon.message-partners {
+  background-image: url("./asset/tableMessagePartners.svg");
+}
+
+button .icon.export-list {
+  background-image: url("./asset/tableExportList.svg");
+}
+
 /* spacing-padding */
 /* spacing-margin */
-/* spacing-width */
-/* icons */
-/* button background-gradient */
+
+/* table row button font-size is 10px */
+/* table row button bg is #5E33CE */
+/* table row button radius is full */
+/* table row id font size is 12px */
+/* pagination page number font-weight is 500 */
+/* pagination page number background is #5E33CE */
+/* pagination next page border is #031050 */
