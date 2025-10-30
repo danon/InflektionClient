@@ -19,6 +19,9 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/ui/asset"
+            ],
+            "styles": [
+              "src/ui/style.css"
             ]
           },
           "configurations": {

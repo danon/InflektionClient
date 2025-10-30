@@ -3,11 +3,11 @@ import {ApiClient} from '../../core/ApiClient';
 import {Partner} from '../../core/Partner';
 import {PartnersTable} from './partners-table';
 import {Sidebar} from './sidebar';
+import {SkeletonTable} from './skeleton-table';
 
 @Component({
   selector: 'app-root',
-  imports: [PartnersTable, Sidebar],
-  styleUrl: '../style.css',
+  imports: [PartnersTable, Sidebar, SkeletonTable],
   template: `
     <main>
       <sidebar/>
@@ -26,7 +26,9 @@ import {Sidebar} from './sidebar';
         @if (state === 'available') {
           <partners-table [partners]="partners!"/>
         } @else if (state === 'notAvailable') {
-          <span>Failed to load partners.</span>
+          <skeleton-table [fields]="partnerFields">
+            Failed to load partners.
+          </skeleton-table>
         } @else {
           <span>Loading...</span>
         }
@@ -36,6 +38,7 @@ import {Sidebar} from './sidebar';
 })
 export class App {
   protected state: PartnerState = 'pending';
+  protected partnerFields = ['ID', 'Name', 'Type', 'Contract', 'Gross Sales', 'Commissions', 'Conversions', ''];
   protected partners: Partner[]|null = null;
 
   constructor(
