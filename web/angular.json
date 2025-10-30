@@ -16,7 +16,10 @@
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "tsconfig.app.json"
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/ui/asset"
+            ]
           },
           "configurations": {
             "production": {
