@@ -13,6 +13,7 @@ import {Partner} from '../../core/Partner';
         <th>Gross Sales</th>
         <th>Commissions</th>
         <th>Conversions</th>
+        <th></th>
       </tr>
       @for (partner of partners(); track partner.partnerId) {
         <tr>
@@ -23,6 +24,12 @@ import {Partner} from '../../core/Partner';
           <td>{{partner.partnerGrossSales}}</td>
           <td>{{partner.partnerCommissions}}</td>
           <td data-testid="partnerConversion">{{partner.partnerConversions}}</td>
+          <td>
+            <button class="table-button">
+              <div class="icon details"></div>
+              Details
+            </button>
+          </td>
         </tr>
       }
     </table>

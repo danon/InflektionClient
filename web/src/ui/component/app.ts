@@ -26,15 +26,15 @@ import {SkeletonTable} from './skeleton-table';
           </div>
         </div>
         <div class="flex space-x-17.5">
-          <button>
+          <button class="header-button">
             Choose Columns
             <span class="icon choose-columns"></span>
           </button>
-          <button>
+          <button class="header-button">
             Message Partners
             <span class="icon message-partners"></span>
           </button>
-          <button>
+          <button class="header-button">
             Export List
             <span class="icon export-list"></span>
           </button>
