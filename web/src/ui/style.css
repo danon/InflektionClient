@@ -62,6 +62,12 @@ main section {
   display: flex;
 }
 
+.partner-details {
+  display: flex;
+  justify-content: end;
+  margin-right: 25px;
+}
+
 .justify-between {
   justify-content: space-between;
 }

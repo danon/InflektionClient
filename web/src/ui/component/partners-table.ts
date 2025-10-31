@@ -25,10 +25,12 @@ import {Partner} from '../../core/Partner';
           <td>{{partner.partnerCommissions}}</td>
           <td data-testid="partnerConversion">{{partner.partnerConversions}}</td>
           <td>
-            <button class="table-button">
-              <div class="icon details"></div>
-              Details
-            </button>
+            <div class="partner-details">
+              <button class="table-button">
+                <div class="icon details"></div>
+                Details
+              </button>
+            </div>
           </td>
         </tr>
       }
