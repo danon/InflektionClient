@@ -26,7 +26,7 @@ import {SkeletonTable} from './skeleton-table';
             </div>
           </div>
         </div>
-        <div class="flex space-x-17.5">
+        <div class="header-buttons">
           <button class="header-button" (click)="showPlaceholder()">
             Choose Columns
             <span class="icon choose-columns"></span>

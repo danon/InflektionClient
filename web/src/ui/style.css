@@ -23,27 +23,47 @@ body, * {
   font-weight: 600;
 }
 
-main {
-  display: flex;
-  width: 1920px;
-}
-
 main section {
-  width: 100%;
   padding-left: 25px;
+  padding-right: 25px;
   padding-top: 25px;
 }
 
+.header-buttons {
+  display: flex;
+
+  > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+@media (width >= 1024px) {
+  main {
+    display: flex;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    section {
+      width: 100%;
+    }
+  }
+
+  aside {
+    width: 235px;
+  }
+
+  .header-buttons > *:not(:last-child) {
+    margin-right: 50px;
+  }
+}
+
+/* Copy of tailwind classes */
 .flex {
   display: flex;
 }
 
 .justify-between {
   justify-content: space-between;
-}
-
-.space-x-17\.5 > *:not(:last-child) {
-  margin-right: 50px;
 }
 
 h1 {
@@ -71,6 +91,7 @@ aside {
   ul {
     list-style: none;
     padding-left: 0;
+    width: 100%;
 
     li {
       font-size: 16px;
@@ -80,6 +101,27 @@ aside {
       padding-bottom: 16px;
       display: flex;
       align-items: center;
+
+      .icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+      }
+
+      .icon.dashboard {
+        background-image: url("./asset/sidebarDashboard.svg");
+      }
+
+      .icon.partners {
+        background-image: url("./asset/sidebarPartners.svg");
+      }
+
+      .icon.approvals {
+        background-image: url("./asset/sidebarApprovals.svg");
+      }
     }
 
     li.selected {
@@ -88,10 +130,6 @@ aside {
       font-weight: 600;
       border-left: 5px solid #ff13b8;
       padding-left: 15px;
-    }
-
-    .icon {
-      margin-right: 10px;
     }
   }
 }
@@ -233,32 +271,6 @@ table {
 
   .small-text {
     font-size: 12px;
-  }
-}
-
-aside {
-  width: 235px;
-
-  ul li {
-    .icon {
-      width: 24px;
-      height: 24px;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: inline-block;
-    }
-
-    .icon.dashboard {
-      background-image: url("./asset/sidebarDashboard.svg");
-    }
-
-    .icon.partners {
-      background-image: url("./asset/sidebarPartners.svg");
-    }
-
-    .icon.approvals {
-      background-image: url("./asset/sidebarApprovals.svg");
-    }
   }
 }
 
