@@ -226,6 +226,10 @@ table {
   tr:nth-child(2n+1):not(:first-child) {
     background: #f9fbfe;
   }
+
+  .small-text {
+    font-size: 12px;
+  }
 }
 
 aside {
@@ -277,7 +281,6 @@ button.page-button {
   cursor: pointer;
 }
 
-/* table row id font size is 12px */
 /* add selected pagination */
 /* add previous and next buttons */
 /* disable previous and next buttons, if no more pages */

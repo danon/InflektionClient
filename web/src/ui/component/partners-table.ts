@@ -17,7 +17,7 @@ import {Partner} from '../../core/Partner';
       </tr>
       @for (partner of partners(); track partner.partnerId) {
         <tr>
-          <td>{{partner.partnerId}}</td>
+          <td class="small-text">{{partner.partnerId}}</td>
           <td data-testid="partnerName">{{partner.partnerName}}</td>
           <td>{{partner.partnerType}}</td>
           <td>{{partner.partnerContract}}</td>
