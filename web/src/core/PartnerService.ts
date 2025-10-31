@@ -6,18 +6,16 @@ export class PartnerService {
 
   public constructor(private api: ApiClient) {}
 
-  public async listPartnersWithPageNumber(pageSize: number, page: number): Promise<Result> {
+  public async listPartnersWithPageNumber(pageSize: number, pageNumber: number): Promise<Result> {
     const partners = await this.getPartners();
+    const offset = pageSize * (pageNumber - 1);
+    const page = partners.slice(offset, offset + pageSize);
     return new Result(
-      this.paginate(partners, page, pageSize),
+      page,
       numberOfPages(partners.length, pageSize),
-      partners.length);
-  }
-
-  private paginate(partners: Partner[], pageNumber: number, pageSize: number): Partner[] {
-    const startIndex = pageNumber - 1;
-    const endIndex = startIndex + 1;
-    return partners.slice(startIndex * pageSize, endIndex * pageSize);
+      partners.length,
+      offset + 1,
+      offset + page.length);
   }
 
   private getPartners(): Promise<Partner[]> {
@@ -37,10 +35,12 @@ export function numberOfPages(totalItems: number, pageSize: number): number {
   return Math.max(1, Math.ceil(totalItems / pageSize));
 }
 
-class Result {
+export class Result {
   constructor(
     public partners: Partner[],
     public pageCount: number,
     public totalItems: number,
+    public pageStartItem: number,
+    public pageEndItem: number,
   ) {}
 }

@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {Partner} from '../../core/Partner';
-import {PartnerService} from '../../core/PartnerService';
+import {PartnerService, Result} from '../../core/PartnerService';
 import {TablePaginator} from './paginator';
 import {PartnersTable} from './partners-table';
 import {Sidebar} from './sidebar';
@@ -41,12 +41,13 @@ import {SkeletonTable} from './skeleton-table';
           </button>
         </div>
         @if (state === 'available') {
-          <partners-table [partners]="partners"/>
+          <partners-table [partners]="page!.partners"/>
           <div class="table-summary">
-            Showing x of {{totalItems}} entries
+            Showing {{page!.pageStartItem}} - {{page!.pageEndItem}}
+            of {{page!.totalItems}} entries
           </div>
           <paginator
-              [count]="pageCount"
+              [count]="page!.pageCount"
               [current]="currentPage"
               (change)="changePage($event)"/>
         } @else if (state === 'notAvailable') {
@@ -65,10 +66,8 @@ import {SkeletonTable} from './skeleton-table';
 export class App {
   protected state: PartnerState = 'pending';
   protected partnerFields = ['ID', 'Name', 'Type', 'Contract', 'Gross Sales', 'Commissions', 'Conversions', ''];
-  protected partners: Partner[] = [];
-  protected pageCount: number = 1;
   protected currentPage: number = 1;
-  protected totalItems: number = 0;
+  protected page: Result|null = null;
 
   constructor(
     @Inject(PartnerService)
@@ -87,9 +86,7 @@ export class App {
       .listPartnersWithPageNumber(14, pageNumber)
       .then(result => {
         this.state = 'available';
-        this.partners = result.partners;
-        this.pageCount = result.pageCount;
-        this.totalItems = result.totalItems;
+        this.page = result;
       })
       .catch(() => {
         this.state = 'notAvailable';

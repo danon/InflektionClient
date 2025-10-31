@@ -103,6 +103,36 @@ describe('Partners are presented to the user.', () => {
     const result = await service.listPartnersWithPageNumber(2, 1);
     assertEquals(5, result.totalItems);
   });
+  test('Include start and end index of items, on the first page', async () => {
+    apiClient.setPartners([
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+    ]);
+    const result = await service.listPartnersWithPageNumber(3, 1);
+    assertEquals(1, result.pageStartItem);
+    assertEquals(3, result.pageEndItem);
+  });
+  test('Include start and end index of items, on a second page', async () => {
+    apiClient.setPartners([
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+    ]);
+    const result = await service.listPartnersWithPageNumber(2, 2);
+    assertEquals(3, result.pageStartItem);
+    assertEquals(4, result.pageEndItem);
+  });
+  test('End index only includes existing elements', async () => {
+    apiClient.setPartners([
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+    ]);
+    const result = await service.listPartnersWithPageNumber(5, 1);
+    assertEquals(1, result.pageStartItem);
+    assertEquals(2, result.pageEndItem);
+  });
 });
 
 async function listPartners(service: PartnerService, pageSize: number, page: number): Promise<Partner[]> {
