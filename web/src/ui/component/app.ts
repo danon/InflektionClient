@@ -42,6 +42,9 @@ import {SkeletonTable} from './skeleton-table';
         </div>
         @if (state === 'available') {
           <partners-table [partners]="partners"/>
+          <div class="table-summary">
+            Showing x of {{totalItems}} entries
+          </div>
           <paginator
               [count]="pageCount"
               [current]="currentPage"
@@ -65,6 +68,7 @@ export class App {
   protected partners: Partner[] = [];
   protected pageCount: number = 1;
   protected currentPage: number = 1;
+  protected totalItems: number = 0;
 
   constructor(
     @Inject(PartnerService)
@@ -85,6 +89,7 @@ export class App {
         this.state = 'available';
         this.partners = result.partners;
         this.pageCount = result.pageCount;
+        this.totalItems = result.totalItems;
       })
       .catch(() => {
         this.state = 'notAvailable';

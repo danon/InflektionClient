@@ -291,3 +291,9 @@ button.page-button.disabled {
   border-color: #cdcfdc;
   cursor: default;
 }
+
+.table-summary {
+  text-align: center;
+  color: #031050;
+  margin-top: 30px;
+}

@@ -92,6 +92,17 @@ describe('Partners are presented to the user.', () => {
       assertThrows(() => numberOfPages(0, -1));
     });
   });
+  test('Include total number of elements', async () => {
+    apiClient.setPartners([
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+    ]);
+    const result = await service.listPartnersWithPageNumber(2, 1);
+    assertEquals(5, result.totalItems);
+  });
 });
 
 async function listPartners(service: PartnerService, pageSize: number, page: number): Promise<Partner[]> {

@@ -10,7 +10,8 @@ export class PartnerService {
     const partners = await this.getPartners();
     return new Result(
       this.paginate(partners, page, pageSize),
-      numberOfPages(partners.length, pageSize));
+      numberOfPages(partners.length, pageSize),
+      partners.length);
   }
 
   private paginate(partners: Partner[], pageNumber: number, pageSize: number): Partner[] {
@@ -40,5 +41,6 @@ class Result {
   constructor(
     public partners: Partner[],
     public pageCount: number,
+    public totalItems: number,
   ) {}
 }
