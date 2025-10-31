@@ -281,6 +281,10 @@ button.page-button {
   cursor: pointer;
 }
 
-/* add selected pagination */
+button.page-button.selected {
+  color: #f8fcff;
+  background: #4f26b8;
+}
+
 /* add previous and next buttons */
 /* disable previous and next buttons, if no more pages */

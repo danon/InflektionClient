@@ -42,7 +42,10 @@ import {SkeletonTable} from './skeleton-table';
         </div>
         @if (state === 'available') {
           <partners-table [partners]="partners"/>
-          <paginator [count]="pageCount" (change)="changePage($event)"/>
+          <paginator
+              [count]="pageCount"
+              [current]="currentPage"
+              (change)="changePage($event)"/>
         } @else if (state === 'notAvailable') {
           <skeleton-table [fields]="partnerFields">
             Failed to load partners.
@@ -61,6 +64,7 @@ export class App {
   protected partnerFields = ['ID', 'Name', 'Type', 'Contract', 'Gross Sales', 'Commissions', 'Conversions', ''];
   protected partners: Partner[] = [];
   protected pageCount: number = 1;
+  protected currentPage: number = 1;
 
   constructor(
     @Inject(PartnerService)
@@ -70,6 +74,7 @@ export class App {
   }
 
   protected changePage(pageNumber: number): void {
+    this.currentPage = pageNumber;
     this.listPartners(pageNumber);
   }
 

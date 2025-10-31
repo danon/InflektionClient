@@ -5,7 +5,10 @@ import {Component, EventEmitter, input, Output} from '@angular/core';
   template: `
     <div class="paginator">
       @for (pageIndex of pages(); track pageIndex) {
-        <button (click)="changePage(pageIndex+1)" class="page-button">
+        <button
+            class="page-button"
+            (click)="changePage(pageIndex+1)"
+            [class.selected]="pageIndex+1 == current()">
           {{pageIndex + 1}}
         </button>
       }
@@ -14,6 +17,7 @@ import {Component, EventEmitter, input, Output} from '@angular/core';
 })
 export class TablePaginator {
   public count = input.required<number>();
+  public current = input.required<number>();
 
   @Output()
   private change = new EventEmitter<number>();
