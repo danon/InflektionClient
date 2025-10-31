@@ -41,6 +41,9 @@ import {SkeletonTable} from './skeleton-table';
         </div>
         @if (state === 'available') {
           <partners-table [partners]="partners!"/>
+          <button (click)="changePage(1)">1</button>
+          <button (click)="changePage(2)">2</button>
+          <button (click)="changePage(3)">3</button>
         } @else if (state === 'notAvailable') {
           <skeleton-table [fields]="partnerFields">
             Failed to load partners.
@@ -63,7 +66,15 @@ export class App {
     @Inject(PartnerService)
     protected readonly partnerService: PartnerService,
   ) {
-    this.partnerService.listPartners(14, 1)
+    this.listPartners(1);
+  }
+
+  protected changePage(pageNumber: number): void {
+    this.listPartners(pageNumber);
+  }
+
+  private listPartners(pageNumber: number): void {
+    this.partnerService.listPartners(14, pageNumber)
       .then(partners => {
         this.state = 'available';
         this.partners = partners;
