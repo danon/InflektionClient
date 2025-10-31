@@ -27,15 +27,15 @@ import {SkeletonTable} from './skeleton-table';
           </div>
         </div>
         <div class="flex space-x-17.5">
-          <button class="header-button">
+          <button class="header-button" (click)="showPlaceholder()">
             Choose Columns
             <span class="icon choose-columns"></span>
           </button>
-          <button class="header-button">
+          <button class="header-button" (click)="showPlaceholder()">
             Message Partners
             <span class="icon message-partners"></span>
           </button>
-          <button class="header-button">
+          <button class="header-button" (click)="showPlaceholder()">
             Export List
             <span class="icon export-list"></span>
           </button>
@@ -65,7 +65,7 @@ import {SkeletonTable} from './skeleton-table';
 })
 export class App {
   protected state: PartnerState = 'pending';
-  protected partnerFields = ['ID', 'Name', 'Type', 'Contract', 'Gross Sales', 'Commissions', 'Conversions', ''];
+  protected partnerFields = ['ID', 'Name', 'Type', 'Contract', 'Gross Sales', 'Commissions', 'Conversions'];
   protected currentPage: number = 1;
   protected page: Result|null = null;
 
@@ -91,6 +91,10 @@ export class App {
       .catch(() => {
         this.state = 'notAvailable';
       });
+  }
+
+  protected showPlaceholder(): void {
+    alert('Not implemented');
   }
 }
 

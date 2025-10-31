@@ -103,6 +103,7 @@ button.table-button {
   background: #5e33ce;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 button.header-button {
