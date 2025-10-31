@@ -1,12 +1,10 @@
-import {NgOptimizedImage} from '@angular/common';
 import {Component} from '@angular/core';
 
 @Component({
   selector: 'sidebar',
-  imports: [NgOptimizedImage],
   template: `
     <aside>
-      <img class="logo" ngSrc="../asset/logo.svg" alt="Inflektion" height="27" width="164"/>
+      <div class="logo"></div>
       <ul>
         <li class="selected">
           <div class="icon dashboard"></div>

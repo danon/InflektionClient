@@ -60,9 +60,12 @@ h2 {
 }
 
 aside {
-  img.logo {
+  .logo {
     display: block;
     margin: 42px 0 31px 29px;
+    width: 164px;
+    height: 27px;
+    background-image: url('./asset/logo.svg');
   }
 
   ul {
