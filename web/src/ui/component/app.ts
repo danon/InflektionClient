@@ -1,13 +1,14 @@
 import {Component, Inject} from '@angular/core';
 import {Partner} from '../../core/Partner';
 import {PartnerService} from '../../core/PartnerService';
+import {TablePaginator} from './paginator';
 import {PartnersTable} from './partners-table';
 import {Sidebar} from './sidebar';
 import {SkeletonTable} from './skeleton-table';
 
 @Component({
   selector: 'app-root',
-  imports: [PartnersTable, Sidebar, SkeletonTable],
+  imports: [PartnersTable, Sidebar, SkeletonTable, TablePaginator],
   template: `
     <main>
       <sidebar/>
@@ -40,14 +41,8 @@ import {SkeletonTable} from './skeleton-table';
           </button>
         </div>
         @if (state === 'available') {
-          <partners-table [partners]="partners!"/>
-          <div class="flex">
-            @for (pageIndex of pages(); track pageIndex) {
-              <button (click)="changePage(pageIndex+1)">
-                {{pageIndex + 1}}
-              </button>
-            }
-          </div>
+          <partners-table [partners]="partners"/>
+          <paginator [count]="pageCount" (change)="changePage($event)"/>
         } @else if (state === 'notAvailable') {
           <skeleton-table [fields]="partnerFields">
             Failed to load partners.
@@ -64,7 +59,7 @@ import {SkeletonTable} from './skeleton-table';
 export class App {
   protected state: PartnerState = 'pending';
   protected partnerFields = ['ID', 'Name', 'Type', 'Contract', 'Gross Sales', 'Commissions', 'Conversions', ''];
-  protected partners: Partner[]|null = null;
+  protected partners: Partner[] = [];
   protected pageCount: number = 1;
 
   constructor(
@@ -89,10 +84,6 @@ export class App {
       .catch(() => {
         this.state = 'notAvailable';
       });
-  }
-
-  protected pages(): number[] {
-    return [...Array(this.pageCount).keys()];
   }
 }
 
