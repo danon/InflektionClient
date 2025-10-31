@@ -12,26 +12,26 @@ describe('Partners are presented to the user.', () => {
   });
   test('Lists partners.', async () => {
     apiClient.setPartners([makePartner('John Smith')]);
-    const [partner] = await service.listPartners(1, 1);
+    const [partner] = await listPartners(service, 1, 1);
     assertEquals('John Smith', partner.partnerName);
   });
   test('First page only contains page size items.', async () => {
     apiClient.setPartners([
       makePartner('John Smith'),
       makePartner('Mark Doe')]);
-    const partners = await service.listPartners(1, 1);
+    const partners = await listPartners(service, 1, 1);
     assertEquals(1, partners.length);
   });
   test('Second page contains the next item.', async () => {
     apiClient.setPartners([
       makePartner('John Smith'),
       makePartner('Mark Doe')]);
-    const [partner] = await service.listPartners(1, 2);
+    const [partner] = await listPartners(service, 1, 2);
     assertEquals('Mark Doe', partner.partnerName);
   });
   test('Page 0 is invalid', () => {
     assertThrows(() => {
-      service.listPartners(1, 0);
+      listPartners(service, 1, 0);
     });
   });
   test('Second page has the third item.', async () => {
@@ -39,26 +39,26 @@ describe('Partners are presented to the user.', () => {
       makePartner('John Smith'),
       makePartner('Mark Doe'),
       makePartner('Steve Johnson')]);
-    const [partner] = await service.listPartners(2, 2);
+    const [partner] = await listPartners(service, 2, 2);
     assertEquals('Steve Johnson', partner.partnerName);
   });
   test('Calls api client to fetch partners.', async () => {
     const apiClient = new CountingCallsApiClient();
     const service = new PartnerService(apiClient);
-    service.listPartners(1, 1);
+    listPartners(service, 1, 1);
     assertEquals(1, apiClient.calls);
   });
   test('Listing items multiple times does not call endpoint multiple times', async () => {
     const apiClient = new CountingCallsApiClient();
     const service = new PartnerService(apiClient);
-    await service.listPartners(1, 1);
-    await service.listPartners(1, 1);
+    await listPartners(service, 1, 1);
+    await listPartners(service, 1, 1);
     assertEquals(1, apiClient.calls);
   });
   test('Listing items again, returns previous fetched partners.', async () => {
     apiClient.setPartners([makePartner('John Smith')]);
-    await service.listPartners(1, 1);
-    const [partner] = await service.listPartners(1, 1);
+    await listPartners(service, 1, 1);
+    const [partner] = await listPartners(service, 1, 1);
     assertEquals('John Smith', partner.partnerName);
   });
   test('Inform about number of pages.', async () => {
@@ -93,6 +93,11 @@ describe('Partners are presented to the user.', () => {
     });
   });
 });
+
+async function listPartners(service: PartnerService, pageSize: number, page: number): Promise<Partner[]> {
+  const result = await service.listPartnersWithPageNumber(pageSize, page);
+  return result.partners;
+}
 
 class TestApiClient implements ApiClient {
   private partners: Partner[] = [];

@@ -13,14 +13,6 @@ export class PartnerService {
       numberOfPages(partners.length, pageSize));
   }
 
-  /**
-   * @deprecated
-   */
-  public async listPartners(pageSize: number, page: number): Promise<Partner[]> {
-    const result = await this.listPartnersWithPageNumber(pageSize, page);
-    return result.partners;
-  }
-
   private paginate(partners: Partner[], pageNumber: number, pageSize: number): Partner[] {
     const startIndex = pageNumber - 1;
     const endIndex = startIndex + 1;
