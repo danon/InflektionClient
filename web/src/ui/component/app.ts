@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
-import {ApiClient} from '../../core/ApiClient';
 import {Partner} from '../../core/Partner';
+import {PartnerService} from '../../core/PartnerService';
 import {PartnersTable} from './partners-table';
 import {Sidebar} from './sidebar';
 import {SkeletonTable} from './skeleton-table';
@@ -60,10 +60,10 @@ export class App {
   protected partners: Partner[]|null = null;
 
   constructor(
-    @Inject('ApiClient')
-    protected readonly apiClient: ApiClient,
+    @Inject(PartnerService)
+    protected readonly partnerService: PartnerService,
   ) {
-    this.apiClient.loadPartners()
+    this.partnerService.listPartners(14, 1)
       .then(partners => {
         this.state = 'available';
         this.partners = partners;

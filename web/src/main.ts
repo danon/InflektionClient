@@ -1,4 +1,5 @@
 import {ApiClient, TestErrorClient, TestModeClient} from './core/ApiClient';
+import {PartnerService} from './core/PartnerService';
 import {TestInput, testInput} from './testInput';
 import {createUserInterface} from './ui/ui';
 
@@ -9,4 +10,4 @@ function partnerApiClient(testInput: TestInput): ApiClient {
   return new TestErrorClient();
 }
 
-createUserInterface(partnerApiClient(testInput()));
+createUserInterface(new PartnerService(partnerApiClient(testInput())));
