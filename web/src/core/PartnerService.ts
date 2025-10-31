@@ -6,12 +6,19 @@ export class PartnerService {
 
   public constructor(private api: ApiClient) {}
 
-  public listPartners(pageSize: number, page: number): Promise<Partner[]> {
-    if (page < 1) {
-      throw new Error();
-    }
-    return this.getPartners()
-      .then(partners => this.paginate(partners, page, pageSize));
+  public async listPartnersWithPageNumber(pageSize: number, page: number): Promise<Result> {
+    const partners = await this.getPartners();
+    return new Result(
+      this.paginate(partners, page, pageSize),
+      numberOfPages(partners.length, pageSize));
+  }
+
+  /**
+   * @deprecated
+   */
+  public async listPartners(pageSize: number, page: number): Promise<Partner[]> {
+    const result = await this.listPartnersWithPageNumber(pageSize, page);
+    return result.partners;
   }
 
   private paginate(partners: Partner[], pageNumber: number, pageSize: number): Partner[] {
@@ -28,4 +35,18 @@ export class PartnerService {
     promise.then(partners => this.cachedPartners = partners);
     return promise;
   }
+}
+
+export function numberOfPages(totalItems: number, pageSize: number): number {
+  if (pageSize < 1) {
+    throw new Error();
+  }
+  return Math.max(1, Math.ceil(totalItems / pageSize));
+}
+
+class Result {
+  constructor(
+    public partners: Partner[],
+    public pageCount: number,
+  ) {}
 }

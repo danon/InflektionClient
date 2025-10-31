@@ -1,6 +1,6 @@
 import {ApiClient} from '../src/core/ApiClient';
 import {Partner} from '../src/core/Partner';
-import {PartnerService} from '../src/core/PartnerService';
+import {numberOfPages, PartnerService} from '../src/core/PartnerService';
 import {assertEquals, assertThrows, beforeEach, describe, test} from './vitest';
 
 describe('Partners are presented to the user.', () => {
@@ -60,6 +60,37 @@ describe('Partners are presented to the user.', () => {
     await service.listPartners(1, 1);
     const [partner] = await service.listPartners(1, 1);
     assertEquals('John Smith', partner.partnerName);
+  });
+  test('Inform about number of pages.', async () => {
+    apiClient.setPartners([
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+      makePartner('John Smith'),
+    ]);
+    const result = await service.listPartnersWithPageNumber(2, 1);
+    assertEquals(3, result.pageCount);
+  });
+  describe('Page amount', () => {
+    test('Given 0 partners, there is one page', () => {
+      assertEquals(1, numberOfPages(0, 10));
+    });
+    test('Given max partners, there is one page', () => {
+      assertEquals(1, numberOfPages(10, 10));
+    });
+    test('Given 11 partners on a 10 sized page, there are 2 pages', () => {
+      assertEquals(2, numberOfPages(11, 10));
+    });
+    test('Given 3 partners on a 1 sized page, there are 3 pages', () => {
+      assertEquals(3, numberOfPages(3, 1));
+    });
+    test('Page size of 0 is invalid', () => {
+      assertThrows(() => numberOfPages(0, 0));
+    });
+    test('Negative page size is invalid', () => {
+      assertThrows(() => numberOfPages(0, -1));
+    });
   });
 });
 
