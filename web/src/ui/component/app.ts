@@ -41,9 +41,13 @@ import {SkeletonTable} from './skeleton-table';
         </div>
         @if (state === 'available') {
           <partners-table [partners]="partners!"/>
-          <button (click)="changePage(1)">1</button>
-          <button (click)="changePage(2)">2</button>
-          <button (click)="changePage(3)">3</button>
+          <div class="flex">
+            @for (pageIndex of pages(); track pageIndex) {
+              <button (click)="changePage(pageIndex+1)">
+                {{pageIndex + 1}}
+              </button>
+            }
+          </div>
         } @else if (state === 'notAvailable') {
           <skeleton-table [fields]="partnerFields">
             Failed to load partners.
@@ -61,6 +65,7 @@ export class App {
   protected state: PartnerState = 'pending';
   protected partnerFields = ['ID', 'Name', 'Type', 'Contract', 'Gross Sales', 'Commissions', 'Conversions', ''];
   protected partners: Partner[]|null = null;
+  protected pageCount: number = 1;
 
   constructor(
     @Inject(PartnerService)
@@ -74,14 +79,20 @@ export class App {
   }
 
   private listPartners(pageNumber: number): void {
-    this.partnerService.listPartners(14, pageNumber)
-      .then(partners => {
+    this.partnerService
+      .listPartnersWithPageNumber(14, pageNumber)
+      .then(result => {
         this.state = 'available';
-        this.partners = partners;
+        this.partners = result.partners;
+        this.pageCount = result.pageCount;
       })
       .catch(() => {
         this.state = 'notAvailable';
       });
+  }
+
+  protected pages(): number[] {
+    return [...Array(this.pageCount).keys()];
   }
 }
 
