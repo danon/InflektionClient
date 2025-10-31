@@ -1,13 +1,13 @@
 import {Component, Inject} from '@angular/core';
-import {ApiClient} from '../core/ApiClient';
-import {Partner} from '../core/Partner';
+import {ApiClient} from '../../core/ApiClient';
+import {Partner} from '../../core/Partner';
 import {PartnersTable} from './partners-table';
 import {Sidebar} from './sidebar';
 
 @Component({
   selector: 'app-root',
   imports: [PartnersTable, Sidebar],
-  styleUrl: './style.css',
+  styleUrl: '../style.css',
   template: `
     <main>
       <sidebar/>

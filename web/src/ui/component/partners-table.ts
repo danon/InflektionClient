@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import {Partner} from '../core/Partner';
+import {Partner} from '../../core/Partner';
 
 @Component({
   selector: 'partners-table',
