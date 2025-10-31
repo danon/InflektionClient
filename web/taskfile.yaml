@@ -10,3 +10,6 @@ tasks:
   start:
     - task: bundle
     - yarn ng serve --port 8080
+  build:
+    - task: install
+    - yarn ng build --base-href {{.CLI_ARGS}}

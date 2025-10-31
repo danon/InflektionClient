@@ -32,6 +32,9 @@ jobs:
       - name: Run application acceptance tests
         run: task accept:test
 
+      - name: Build application for deployment
+        run: task web:build -- /InflektionClient/
+
       - name: Deploy to github pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
