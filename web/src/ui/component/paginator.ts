@@ -3,9 +3,9 @@ import {Component, EventEmitter, input, Output} from '@angular/core';
 @Component({
   selector: 'paginator',
   template: `
-    <div class="flex">
+    <div class="paginator">
       @for (pageIndex of pages(); track pageIndex) {
-        <button (click)="changePage(pageIndex+1)">
+        <button (click)="changePage(pageIndex+1)" class="page-button">
           {{pageIndex + 1}}
         </button>
       }

@@ -93,7 +93,8 @@ aside {
   }
 }
 
-button {
+button.header-button,
+button.table-button {
   color: #ffffff;
   border: none;
   background: #5e33ce;
@@ -258,10 +259,25 @@ aside {
   padding: 32px 0;
 }
 
-/* spacing-padding */
-/* spacing-margin */
+.paginator {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+button.page-button {
+  font-weight: 500;
+  border: 1px solid #031050;
+  width: 31px;
+  height: 31px;
+  background: none;
+  margin-right: 15px;
+  border-radius: 16px;
+  color: #031050;
+  cursor: pointer;
+}
 
 /* table row id font size is 12px */
-/* pagination page number font-weight is 500 */
-/* pagination page number background is #5E33CE */
-/* pagination next page border is #031050 */
+/* add selected pagination */
+/* add previous and next buttons */
+/* disable previous and next buttons, if no more pages */
